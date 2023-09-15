@@ -1,0 +1,29 @@
+body {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.box {
+  text-align: center;
+  padding: 20px 20px 20px 20px;
+  margin: 20px 20px 20px 20px;
+  background-color: lightsteelblue;
+  width: 800px;
+  height: 500px;
+}
+
+#game-content {
+  display: none;
+  background-color: gray;
+  width: 800px;
+  height: 400px;
+}
+
+#game-lose {
+  display: none;
+}
+
+#game-win {
+  display: none;
+}
