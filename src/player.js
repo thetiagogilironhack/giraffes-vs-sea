@@ -1,11 +1,12 @@
 class Player {
-  constructor(gameContentScreen, left, top, height, width) {
+  constructor(gameContentScreen, height, width, left, top) {
     this.gameContentScreen = gameContentScreen;
-    this.left = left;
-    this.top = top;
+    this.health = 100;
     this.height = height;
     this.width = width;
-    this.element = document.createElement('player')
+    this.left = left - this.width / 2;
+    this.top = top - this.height / 2;
+    this.element = document.createElement("player");
 
     // this.element.src = '../images/car.png'
     this.element.style.backgroundColor = "red"; // need to delete when add img and unhide the img element above
@@ -20,6 +21,6 @@ class Player {
   }
 
   receiveDmg() {
-    this.health = this.health - enemy.strength;
+    this.health = this.health - Enemy.strength;
   }
 }

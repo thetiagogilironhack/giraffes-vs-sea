@@ -4,25 +4,25 @@ class Enemy {
     strength,
     speed,
     spawn,
-    left,
-    top,
     height,
     width,
+    left,
+    top,
     img
   ) {
     this.gameContentScreen = gameContentScreen;
     this.strength = strength;
     this.speed = speed;
     this.spawn = spawn;
-    this.top = top;
-    this.left = left;
     this.height = height;
     this.width = width;
+    this.left = left - this.width / 2;
+    this.top = top - this.height / 2;
     this.element = document.createElement("img");
 
     // this.element.src = img;
     this.element.style.backgroundColor = img; // need to delete when add img and unhide the img element above
-    
+
     this.element.style.position = "absolute";
     this.element.style.left = `${this.left}px`;
     this.element.style.top = `${this.top}px`;
@@ -38,11 +38,10 @@ class Enemy {
 
   speedTime() {
     // NOT CREATED
-    const duration = this.speed;
   }
 
   updatePosition() {
-    this.left -= this.speed;
+    this.left -= 1
   }
 
   move() {
