@@ -1,23 +1,20 @@
 body {
   display: flex;
   justify-content: center;
-  text-align: center;
 }
 
 .box {
   text-align: center;
   padding: 20px 20px 20px 20px;
-  margin: 20px 20px 20px 20px;
+  margin: 100px;
   background-color: lightsteelblue;
-  width: 800px;
+  width: 1000px;
   height: 500px;
 }
 
 #game-content {
   display: none;
-  background-color: gray;
-  width: 800px;
-  height: 400px;
+  position: relative;
 }
 
 #game-lose {
