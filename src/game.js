@@ -22,7 +22,7 @@ class Game {
     );
     this.shark = new Enemy(
       this.gameContentScreen,
-      20,
+      30,
       1,
       2,
       30,
@@ -33,7 +33,7 @@ class Game {
     );
     this.whale = new Enemy(
       this.gameContentScreen,
-      20,
+      40,
       1,
       2,
       50,
@@ -88,16 +88,14 @@ class Game {
   update() {
     for (let i = 0; i < this.enemies.length; i += 1) {
       this.enemies[i].move();
-    }
 
-    for (const enemy of this.enemies) {
-      if (enemy.left <= 200) {
-        this.player.health -= enemy.strength;
-        if (enemy.left <= 200) {
-          enemy.element.remove();
-        }
+      if (this.enemies[i].left <= 200 && !this.enemies[i].hasDamagedPlayer) {
+        this.player.health -= this.enemies[i].strength;
+        this.enemies[i].hasDamagedPlayer = true;
+        this.enemies[i].element.remove();
         console.log(this.player.health);
       }
+
     }
   }
 }
