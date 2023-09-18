@@ -12,10 +12,10 @@ class Game {
     this.dolphin = new Enemy(
       this.gameContentScreen,
       20,
-      1,
-      1,
       20,
       40,
+      1,
+      1,
       800,
       150,
       "blue"
@@ -23,21 +23,21 @@ class Game {
     this.shark = new Enemy(
       this.gameContentScreen,
       30,
-      1,
-      2,
       30,
       60,
+      1,
+      2,
       800,
       300,
       "yellow"
     );
     this.whale = new Enemy(
       this.gameContentScreen,
-      50,
-      1,
-      3,
+      45,
       50,
       100,
+      1,
+      3,
       800,
       450,
       "orange"
@@ -88,9 +88,7 @@ class Game {
   update() {
     for (let i = 0; i < this.enemies.length; i += 1) {
       const enemyMove = this.enemies[i];
-      setTimeout(() => {
-        enemyMove.move();
-      }, enemyMove.spawn);
+      enemyMove.move();
 
       if (this.enemies[i].left <= 200 && !this.enemies[i].hasDamagedPlayer) {
         this.player.health -= this.enemies[i].strength;
