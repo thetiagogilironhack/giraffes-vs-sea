@@ -8,52 +8,49 @@ class Game {
     this.width = 1000;
     this.animateId = 0;
     this.gameOver = false;
+    this.enemyStartPosition = this.width - 200;
     this.player = new Player(this.gameContentScreen, 50, 80, 100, 300);
+
     this.dolphin = new Enemy(
       this.gameContentScreen,
       20,
       20,
       40,
+      0.7, // should be 0.7
       1,
-      1,
-      800,
+      this.enemyStartPosition,
       150,
-      "blue"
+      "blue",
+      true
     );
+
     this.shark = new Enemy(
       this.gameContentScreen,
       30,
       30,
       60,
-      1,
-      2,
-      800,
+      0.45, // should be 0.45
+      3,
+      this.enemyStartPosition,
       300,
-      "yellow"
+      "yellow",
+      false
     );
+
     this.whale = new Enemy(
       this.gameContentScreen,
-      45,
+      50,
       50,
       100,
-      1,
-      3,
-      800,
-      450,
-      "orange"
-    );
-    /* this.kraken = new Enemy(
-      this.gameContentScreen,
-      20,
+      0.3, // should be 0.3
       5,
-      2,
-      150,
-      300,
-      500 + 300 / 2,
-      300,
-      "gray"
-    );*/
-    this.enemies = [this.dolphin, this.shark, this.whale /* this.whale */];
+      this.enemyStartPosition,
+      450,
+      "orange",
+      false
+    );
+
+    this.enemies = [this.dolphin, this.shark, this.whale];
   }
 
   start() {
@@ -87,15 +84,40 @@ class Game {
 
   update() {
     for (let i = 0; i < this.enemies.length; i += 1) {
-      const enemyMove = this.enemies[i];
-      enemyMove.move();
+      this.enemies[i].move();
+
+      if (this.enemies[i].left <= this.width / 2) {
+        if (i + 1 < this.enemies.length) {
+          this.enemies[i + 1].isMoving = true;
+        }
+      }
 
       if (this.enemies[i].left <= 200 && !this.enemies[i].hasDamagedPlayer) {
         this.player.health -= this.enemies[i].strength;
         this.enemies[i].hasDamagedPlayer = true;
         this.enemies[i].element.remove();
+        this.enemies.splice(i, 1);
+        i -= 1;
         console.log(this.player.health);
+        console.log(this.enemies);
       }
+    }
+
+    if (this.enemies.length === 0) {
+      this.enemies.push(
+        new Enemy(
+          this.gameContentScreen,
+          100,
+          150,
+          300,
+          0.1, // should be 0.1
+          2,
+          this.enemyStartPosition - 150,
+          300,
+          "gray",
+          true
+        )
+      );
     }
   }
 }

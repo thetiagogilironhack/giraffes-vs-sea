@@ -13,6 +13,6 @@ window.addEventListener("load", () => {
   });
 
   restartButton.addEventListener("click", function () {
-    startGame();
+    location.reload();
   });
 });

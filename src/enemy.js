@@ -8,7 +8,8 @@ class Enemy {
     spawn,
     left,
     top,
-    img
+    img,
+    isMoving
   ) {
     this.gameContentScreen = gameContentScreen;
     this.strength = strength;
@@ -18,6 +19,7 @@ class Enemy {
     this.spawn = spawn * 1000;
     this.left = left;
     this.top = top - this.height / 2;
+    this.isMoving = isMoving;
 
     this.element = document.createElement("img");
     // this.element.src = img;
@@ -34,10 +36,10 @@ class Enemy {
   spawnTime() {}
 
   move() {
-    setTimeout(() => {
+    if (this.isMoving) {
       this.updatePosition();
-    }, this.spawn);
-    this.element.style.left = `${this.left}px`;
+      this.element.style.left = `${this.left}px`;
+    }
   }
 
   updatePosition() {
