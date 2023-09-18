@@ -13,10 +13,10 @@ class Game {
       this.gameContentScreen,
       20,
       1,
-      2,
+      1,
       20,
       40,
-      800 + 40 / 2,
+      800,
       150,
       "blue"
     );
@@ -26,19 +26,19 @@ class Game {
       1,
       2,
       30,
-      60, // everytime you change this parameter
-      800 + 60 / 2, // you also need to change this parameter
+      60,
+      800,
       300,
       "yellow"
     );
     this.whale = new Enemy(
       this.gameContentScreen,
-      40,
+      50,
       1,
-      2,
+      3,
       50,
       100,
-      800 + 100 / 2,
+      800,
       450,
       "orange"
     );
@@ -73,9 +73,9 @@ class Game {
 
     document.getElementById("hp").innerText = this.player.health;
 
-    /*if (this.player.health <= 0) {
+    if (this.player.health <= 0) {
       this.gameOver = true;
-    }*/
+    }
 
     if (this.gameOver) {
       this.gameContentScreen.style.display = "none";
@@ -87,7 +87,10 @@ class Game {
 
   update() {
     for (let i = 0; i < this.enemies.length; i += 1) {
-      this.enemies[i].move();
+      const enemyMove = this.enemies[i];
+      setTimeout(() => {
+        enemyMove.move();
+      }, enemyMove.spawn);
 
       if (this.enemies[i].left <= 200 && !this.enemies[i].hasDamagedPlayer) {
         this.player.health -= this.enemies[i].strength;
@@ -95,7 +98,6 @@ class Game {
         this.enemies[i].element.remove();
         console.log(this.player.health);
       }
-
     }
   }
 }

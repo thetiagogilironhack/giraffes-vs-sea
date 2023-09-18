@@ -4,7 +4,7 @@ class Player {
     this.health = 100;
     this.height = height;
     this.width = width;
-    this.left = left - this.width / 2;
+    this.left = left;
     this.top = top - this.height / 2;
     this.element = document.createElement("player");
 

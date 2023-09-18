@@ -12,11 +12,12 @@ class Enemy {
   ) {
     this.gameContentScreen = gameContentScreen;
     this.strength = strength;
-    this.speed = speed;
-    this.spawn = spawn;
+    this.hasDamagedPlayer = false;
+    this.speed = speed * 1000;
+    this.spawn = spawn * 1000;
     this.height = height;
     this.width = width;
-    this.left = left - this.width / 2;
+    this.left = left;
     this.top = top - this.height / 2;
     this.element = document.createElement("img");
 
@@ -32,8 +33,7 @@ class Enemy {
     this.gameContentScreen.appendChild(this.element);
   }
 
-  spawn() {
-    // NOT CREATED
+  spawnTime() {
   }
 
   speedTime() {
