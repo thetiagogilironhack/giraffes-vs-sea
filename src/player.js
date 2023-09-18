@@ -19,8 +19,4 @@ class Player {
 
     this.gameContentScreen.appendChild(this.element);
   }
-
-  receiveDmg() {
-    this.health = this.health - Enemy.strength;
-  }
 }

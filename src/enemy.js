@@ -41,7 +41,7 @@ class Enemy {
   }
 
   updatePosition() {
-    this.left -= 1
+    this.left -= this.speed;
   }
 
   move() {
