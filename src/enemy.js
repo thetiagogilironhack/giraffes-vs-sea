@@ -9,7 +9,8 @@ class Enemy {
     left,
     top,
     img,
-    isMoving
+    isMoving,
+    mathType
   ) {
     this.gameContentScreen = gameContentScreen;
     this.strength = strength;
@@ -20,6 +21,7 @@ class Enemy {
     this.left = left;
     this.top = top - this.height / 2;
     this.isMoving = isMoving;
+    this.mathType = mathType;
 
     this.element = document.createElement("img");
     // this.element.src = img;

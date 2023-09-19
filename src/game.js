@@ -21,7 +21,8 @@ class Game {
       this.enemyStartPosition,
       150,
       "blue",
-      true
+      true,
+      "dolphin"
     );
 
     this.shark = new Enemy(
@@ -34,7 +35,8 @@ class Game {
       this.enemyStartPosition,
       300,
       "yellow",
-      false
+      false,
+      "shark"
     );
 
     this.whale = new Enemy(
@@ -42,17 +44,19 @@ class Game {
       50,
       50,
       100,
-      0.3, // should be 0.3
+      0.3, // should be 0.3s
       5,
       this.enemyStartPosition,
       450,
       "orange",
-      false
+      false,
+      "whale"
     );
 
     this.enemies = [this.dolphin, this.shark, this.whale];
   }
 
+  // START THE GAME - CHANGES THE DISPLAY OF THE SCREENS
   start() {
     this.startScreen.style.display = "none";
     this.gameLoseScreen.style.display = "none";
@@ -65,6 +69,7 @@ class Game {
     this.gameLoop();
   }
 
+  // GAME LOOP - SO THE GAME CAN FINISH AND RESTART
   gameLoop() {
     this.update();
 
@@ -82,6 +87,7 @@ class Game {
     }
   }
 
+  // UPDATE or GAMEPLAY - HERE THE ENEMIES START MOVING IN A DEFINED ORDER AND GET ELIMINATED
   update() {
     for (let i = 0; i < this.enemies.length; i += 1) {
       this.enemies[i].move();
@@ -115,9 +121,51 @@ class Game {
           this.enemyStartPosition - 150,
           300,
           "gray",
-          true
+          true,
+          "kraken"
         )
       );
     }
+  }
+
+  // MATH PROBLEMS - HERE ARE ALL OF THE MATH FUNCTIONS
+  mathGenerator(enemy) {
+    let x, y, operation;
+
+    switch (enemy.mathType) {
+      case "dolphin":
+        x = Math.floor(Math.random() * 10);
+        y = Math.floor(Math.random() * 10);
+        operation = "+";
+        break;
+      case "shark":
+        x = Math.floor(Math.random() * 100);
+        y = Math.floor(Math.random() * 10);
+        operation = "+";
+        break;
+      case "whale":
+        x = Math.floor(Math.random() * 100);
+        y = Math.floor(Math.random() * 100);
+        operation = "+";
+        break;
+      case "kraken":
+        x = Math.floor(Math.random() * 1000);
+        y = Math.floor(Math.random() * 100);
+        operation = "+";
+        break;
+      default:
+        x = 0;
+        y = 0;
+        operation = "+";
+        break;
+    }
+
+    enemy.mathType = eval(`${x} ${operation} ${y}`);
+    this.displayMathProblem(x, y, operation);
+  }
+
+  displayMath(x, y, operation) {
+    const mathProblemElement = document.getElementById("math-problem");
+    mathProblemElement.textContent = `${x} ${operation} ${y} = `;
   }
 }
