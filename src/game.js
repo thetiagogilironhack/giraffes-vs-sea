@@ -26,6 +26,8 @@ class Game {
     this.shark = undefined;
     this.whale = undefined;
     this.kraken = undefined;
+    this.dolphinRemoved = false;
+    this.sharkRemoved = false;
     this.enemies = [this.dolphin];
   }
 
@@ -39,8 +41,8 @@ class Game {
     this.gameContentScreen.style.height = `${this.height}px`;
     this.gameContentScreen.style.width = `${this.width}px`;
 
-    console.log(this.dolphin);
     console.log("Dolphin spawned");
+    console.log(this.dolphin);
 
     this.gameLoop();
   }
@@ -48,7 +50,7 @@ class Game {
   // MATH DISPLAY - DISPLAY THE MATH PROBLEM ON THE SCREEN
   createUserAnswerInput() {
     const userAnswer = document.querySelector("#user-answer");
-    console.log(userAnswer.value)
+    console.log(userAnswer.value);
     return parseFloat(userAnswer.value);
   }
 
@@ -62,8 +64,18 @@ class Game {
 
       if (userAnswer === enemy.correctAnswer) {
         enemy.element.remove();
+
         this.enemies.splice(i, 1);
-        
+        switch (enemy.mathType) {
+          case "dolphin":
+            this.dolphinRemoved = true;
+            break;
+          case "shark":
+            this.sharkRemoved = true;
+            break;
+          default:
+            break;
+        }
       } else if (enemy.left <= 200 && !enemy.hasDamagedPlayer) {
         this.player.health -= enemy.strength;
         enemy.hasDamagedPlayer = true;
@@ -75,13 +87,16 @@ class Game {
     }
 
     // SPAWN SHARK
-    if (!this.sharkSpawned && this.dolphin.left <= this.width / 2) {
+    if (
+      !this.sharkSpawned &&
+      (this.dolphinRemoved || this.dolphin.left <= this.width / 2)
+    ) {
       this.shark = new Enemy(
         this.gameContentScreen,
         30,
         30,
         60,
-        0.45,
+        0.1, // should be 0.45
         1,
         this.enemyStartPosition,
         300,
@@ -92,16 +107,21 @@ class Game {
       this.enemies.push(this.shark);
       this.sharkSpawned = true;
       console.log("Shark spawned");
+      console.log(this.shark);
     }
 
     // SPAWN WHALE
-    if (!this.whaleSpawned && this.shark && this.shark.left <= this.width / 2) {
+    if (
+      !this.whaleSpawned &&
+      this.shark &&
+      (this.sharkRemoved || this.shark.left <= this.width / 2)
+    ) {
       this.whale = new Enemy(
         this.gameContentScreen,
         45,
         50,
         100,
-        0.3,
+        0.1, // should be 0.3
         1,
         this.enemyStartPosition,
         450,
@@ -112,6 +132,7 @@ class Game {
       this.enemies.push(this.whale);
       this.whaleSpawned = true;
       console.log("Whale spawned");
+      console.log(this.whale);
     }
 
     // SPAWN KRAKEN
@@ -132,6 +153,7 @@ class Game {
       this.enemies.push(this.kraken);
       this.krakenSpawned = true;
       console.log("Kraken spawned");
+      console.log(this.kraken);
     }
   }
 
