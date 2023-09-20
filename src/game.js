@@ -15,7 +15,7 @@ class Game {
       20,
       20,
       40,
-      0.7, // should be 0.7
+      1, // should be 0.7
       2,
       this.enemyStartPosition,
       150,
@@ -39,19 +39,20 @@ class Game {
     this.gameContentScreen.style.height = `${this.height}px`;
     this.gameContentScreen.style.width = `${this.width}px`;
 
+    console.log(this.dolphin);
+    console.log("Dolphin spawned");
+
     this.gameLoop();
   }
 
   // MATH DISPLAY - DISPLAY THE MATH PROBLEM ON THE SCREEN
-  createUserAnswerInput() {
-    let userAnswer = document.querySelector("#user-answer");
+  /* createUserAnswerInput() {
+    const userAnswer = document.querySelector("#user-answer");
     console.log(userAnswer.value);
-  }
+  } */
 
   // UPDATE or GAMEPLAY - HERE THE ENEMIES START MOVING IN A DEFINED ORDER AND GET ELIMINATED
   update() {
-    this.createUserAnswerInput();
-
     for (let i = 0; i < this.enemies.length; i += 1) {
       const enemy = this.enemies[i];
       enemy.move();
@@ -59,11 +60,10 @@ class Game {
       if (enemy.left <= 200 && !enemy.hasDamagedPlayer) {
         this.player.health -= enemy.strength;
         enemy.hasDamagedPlayer = true;
-        enemy.element.remove();
+        enemy.remove();
         this.enemies.splice(i, 1);
         i -= 1;
         console.log(this.player.health);
-        console.log(this.enemies);
       }
     }
 
@@ -75,14 +75,13 @@ class Game {
         30,
         60,
         0.45,
-        3,
+        1,
         this.enemyStartPosition,
         300,
         "yellow",
         true,
         "shark"
       );
-      console.log(this.shark);
       this.enemies.push(this.shark);
       this.sharkSpawned = true;
       console.log("Shark spawned");
@@ -96,7 +95,7 @@ class Game {
         50,
         100,
         0.3,
-        5,
+        1,
         this.enemyStartPosition,
         450,
         "orange",
