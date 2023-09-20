@@ -42,6 +42,7 @@ class Enemy {
   spawnTime() {}
 
   move() {
+    
     if (this.isMoving) {
       setTimeout(() => this.updatePosition(), this.spawn);
       this.element.style.left = `${this.left}px`;
@@ -59,25 +60,22 @@ class Enemy {
         this.valueX = Math.floor(Math.random() * 10);
         this.valueY = Math.floor(Math.random() * 10);
         this.operation = "+";
-        this.enemyRemove();
+        
         break;
       case "shark":
         this.valueX = Math.floor(Math.random() * 100);
         this.valueY = Math.floor(Math.random() * 10);
         this.operation = "+";
-        this.enemyRemove();
         break;
       case "whale":
         this.valueX = Math.floor(Math.random() * 100);
         this.valueY = Math.floor(Math.random() * 100);
         this.operation = "+";
-        this.enemyRemove();
         break;
       case "kraken":
         this.valueX = Math.floor(Math.random() * 1000);
         this.valueY = Math.floor(Math.random() * 100);
         this.operation = "+";
-        this.enemyRemove();
         break;
       default:
         this.valueX = 0;
@@ -87,21 +85,5 @@ class Enemy {
     }
 
     return eval(`${this.valueX} + ${this.valueY}`);
-  }
-
-  createUserAnswerInput() {
-    const userAnswer = document.querySelector("#user-answer");
-    console.log(userAnswer.value);
-  }
-
-  enemyRemove() {
-    const userAnswer = this.createUserAnswerInput();
-    for (let i = 0; i < Game.enemies.length; i += 1) {
-      const enemy = this.enemies[i];
-      if (userAnswer === this.correctAnswer) {
-        enemy.remove();
-        Game.enemies.splice(i, 1);
-      }
-    }
   }
 }

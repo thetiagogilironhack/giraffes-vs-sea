@@ -15,7 +15,7 @@ class Game {
       20,
       20,
       40,
-      1, // should be 0.7
+      0.1, // should be 0.7
       2,
       this.enemyStartPosition,
       150,
@@ -46,21 +46,28 @@ class Game {
   }
 
   // MATH DISPLAY - DISPLAY THE MATH PROBLEM ON THE SCREEN
-  /* createUserAnswerInput() {
+  createUserAnswerInput() {
     const userAnswer = document.querySelector("#user-answer");
-    console.log(userAnswer.value);
-  } */
+    console.log(userAnswer.value)
+    return parseFloat(userAnswer.value);
+  }
 
   // UPDATE or GAMEPLAY - HERE THE ENEMIES START MOVING IN A DEFINED ORDER AND GET ELIMINATED
   update() {
+    const userAnswer = this.createUserAnswerInput();
+
     for (let i = 0; i < this.enemies.length; i += 1) {
       const enemy = this.enemies[i];
       enemy.move();
 
-      if (enemy.left <= 200 && !enemy.hasDamagedPlayer) {
+      if (userAnswer === enemy.correctAnswer) {
+        enemy.element.remove();
+        this.enemies.splice(i, 1);
+        
+      } else if (enemy.left <= 200 && !enemy.hasDamagedPlayer) {
         this.player.health -= enemy.strength;
         enemy.hasDamagedPlayer = true;
-        enemy.remove();
+        enemy.element.remove();
         this.enemies.splice(i, 1);
         i -= 1;
         console.log(this.player.health);
