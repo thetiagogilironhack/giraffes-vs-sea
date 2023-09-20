@@ -33,8 +33,8 @@ class Enemy {
     this.element.style.width = `${this.width}px`;
 
     this.gameContentScreen.appendChild(this.element);
-    this.valueX = 0;
-    this.valueY = 0;
+    this.xValue = 0;
+    this.yValue = 0;
     this.operation;
     this.correctAnswer = this.mathGenerator();
   }
@@ -56,33 +56,33 @@ class Enemy {
   mathGenerator() {
     switch (this.mathType) {
       case "dolphin":
-        this.valueX = Math.floor(Math.random() * 10);
-        this.valueY = Math.floor(Math.random() * 10);
+        this.xValue = Math.floor(Math.random() * 9) + 1;
+        this.yValue = Math.floor(Math.random() * 9) + 1;
         this.operation = "+";
 
         break;
       case "shark":
-        this.valueX = Math.floor(Math.random() * 100);
-        this.valueY = Math.floor(Math.random() * 10);
+        this.xValue = Math.floor(Math.random() * 99) + 1;
+        this.yValue = Math.floor(Math.random() * 9) + 1;
         this.operation = "+";
         break;
       case "whale":
-        this.valueX = Math.floor(Math.random() * 100);
-        this.valueY = Math.floor(Math.random() * 100);
+        this.xValue = Math.floor(Math.random() * 99) + 1;
+        this.yValue = Math.floor(Math.random() * 99) + 1;
         this.operation = "+";
         break;
       case "kraken":
-        this.valueX = Math.floor(Math.random() * 1000);
-        this.valueY = Math.floor(Math.random() * 100);
+        this.xValue = Math.floor(Math.random() * 999) + 1;
+        this.yValue = Math.floor(Math.random() * 99) + 1;
         this.operation = "+";
         break;
       default:
-        this.valueX = 0;
-        this.valueY = 0;
+        this.xValue = 0;
+        this.yValue = 0;
         this.operation = "+";
         break;
     }
 
-    return eval(`${this.valueX} + ${this.valueY}`);
+    return eval(`${this.xValue} + ${this.yValue}`);
   }
 }

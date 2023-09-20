@@ -13,10 +13,10 @@ class Game {
     this.player = new Player(this.gameContentScreen, 50, 80, 100, 300);
     this.dolphin = new Enemy(
       this.gameContentScreen,
-      20,
+      30,
       20,
       40,
-      0.7, // should be 0.7
+      0.6, // should be 0.6
       2,
       this.enemyStartPosition,
       150,
@@ -41,9 +41,7 @@ class Game {
     this.gameContentScreen.style.height = `${this.height}px`;
     this.gameContentScreen.style.width = `${this.width}px`;
 
-    document.getElementById(
-      "dolphin-problem"
-    ).innerText = `Dolphin: ${this.dolphin.valueX} + ${this.dolphin.valueY}`;
+    this.showEnemyMathProblem("dolphin");
 
     console.log("Dolphin spawned");
     console.log("Correct Answer:", this.dolphin.correctAnswer);
@@ -51,11 +49,29 @@ class Game {
     this.gameLoop();
   }
 
-  // MATH DISPLAY - DISPLAY THE MATH PROBLEM ON THE SCREEN
+  // USER ANSWER DISPLAY - DISPLAY THE USER PROBLEM ON THE SCREEN
   createUserAnswerInput() {
     const userAnswer = document.getElementById("user-answer");
     console.log(userAnswer.value);
     return parseFloat(userAnswer.value);
+  }
+
+  // MATH DISPLAY - DISPLAY THE MATH PROBLEM ON THE SCREEN
+  showEnemyMathProblem(enemyType) {
+    const enemy = this[enemyType];
+    const capitalLetterEnemyType =
+      enemyType.charAt(0).toUpperCase() + enemyType.slice(1);
+    let getProblemElement = document.getElementById(`${enemyType}-problem`);
+    let mathProblem = `${capitalLetterEnemyType}: ${enemy.xValue} + ${enemy.yValue}`;
+    getProblemElement.textContent = mathProblem;
+  }
+
+  // REMOVE MATH DISPLAY - REMOVE THE MATH PROBLEM OF THE SCREEN
+  removeEnemyMathProblem(enemyType) {
+    const getProblemElement = document.getElementById(`${enemyType}-problem`);
+    getProblemElement.remove();
+    const userAnswer = document.getElementById("user-answer");
+    userAnswer.value = "";
   }
 
   // UPDATE or GAMEPLAY - HERE THE ENEMIES START MOVING IN A DEFINED ORDER AND GET ELIMINATED
@@ -73,12 +89,15 @@ class Game {
         switch (enemy.mathType) {
           case "dolphin":
             this.dolphinRemoved = true;
+            this.removeEnemyMathProblem("dolphin");
             break;
           case "shark":
             this.sharkRemoved = true;
+            this.removeEnemyMathProblem("shark");
             break;
           case "whale":
             this.whaleRemoved = true;
+            this.removeEnemyMathProblem("whale");
             break;
           case "kraken":
             this.krakenRemoved = true;
@@ -90,6 +109,27 @@ class Game {
         this.player.health -= enemy.strength;
         enemy.hasDamagedPlayer = true;
         enemy.element.remove();
+        
+        switch (enemy.mathType) {
+          case "dolphin":
+            this.dolphinRemoved = true;
+            this.removeEnemyMathProblem("dolphin");
+            break;
+          case "shark":
+            this.sharkRemoved = true;
+            this.removeEnemyMathProblem("shark");
+            break;
+          case "whale":
+            this.whaleRemoved = true;
+            this.removeEnemyMathProblem("whale");
+            break;
+          case "kraken":
+            this.krakenRemoved = true;
+            break;
+          default:
+            break;
+        }
+        
         this.enemies.splice(i, 1);
         i -= 1;
         console.log(this.player.health);
@@ -103,7 +143,7 @@ class Game {
     ) {
       this.shark = new Enemy(
         this.gameContentScreen,
-        30,
+        40,
         30,
         60,
         0.45, // should be 0.45
@@ -116,9 +156,7 @@ class Game {
       );
       this.enemies.push(this.shark);
       this.sharkSpawned = true;
-      document.getElementById(
-        "shark-problem"
-      ).innerText = `Shark: ${this.shark.valueX} + ${this.shark.valueY}`;
+      this.showEnemyMathProblem("shark");
       console.log("Shark spawned");
       console.log("Correct Answer:", this.shark.correctAnswer);
     }
@@ -131,7 +169,7 @@ class Game {
     ) {
       this.whale = new Enemy(
         this.gameContentScreen,
-        45,
+        60,
         50,
         100,
         0.3, // should be 0.3
@@ -144,9 +182,7 @@ class Game {
       );
       this.enemies.push(this.whale);
       this.whaleSpawned = true;
-      document.getElementById(
-        "whale-problem"
-      ).innerText = `Whale: ${this.whale.valueX} + ${this.whale.valueY}`;
+      this.showEnemyMathProblem("whale");
       console.log("Whale spawned");
       console.log("Correct Answer:", this.whale.correctAnswer);
     }
@@ -167,9 +203,7 @@ class Game {
         "kraken"
       );
       this.enemies.push(this.kraken);
-      document.getElementById(
-        "kraken-problem"
-      ).innerText = `Kraken: ${this.kraken.valueX} + ${this.kraken.valueY}`;
+      this.showEnemyMathProblem("kraken");
       console.log("Kraken spawned");
       console.log("Correct Answer:", this.kraken.correctAnswer);
     }
