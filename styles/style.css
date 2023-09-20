@@ -13,6 +13,7 @@ body {
 }
 
 #game-content {
+  text-align: left;
   display: none;
   position: relative;
 }

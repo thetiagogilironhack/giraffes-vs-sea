@@ -42,7 +42,6 @@ class Enemy {
   spawnTime() {}
 
   move() {
-    
     if (this.isMoving) {
       setTimeout(() => this.updatePosition(), this.spawn);
       this.element.style.left = `${this.left}px`;
@@ -60,7 +59,7 @@ class Enemy {
         this.valueX = Math.floor(Math.random() * 10);
         this.valueY = Math.floor(Math.random() * 10);
         this.operation = "+";
-        
+
         break;
       case "shark":
         this.valueX = Math.floor(Math.random() * 100);

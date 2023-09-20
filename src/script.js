@@ -1,6 +1,7 @@
 window.addEventListener("load", () => {
   const startButton = document.getElementById("start-button");
-  const restartButton = document.getElementById("restart-button");
+  const restartLoseButton = document.getElementById("restart-lose-button");
+  const restartWinButton = document.getElementById("restart-win-button");
   let game;
   
   function startGame() {
@@ -13,7 +14,11 @@ window.addEventListener("load", () => {
     startGame();
   });
 
-  restartButton.addEventListener("click", function () {
+  restartLoseButton.addEventListener("click", function () {
+    location.reload();
+  });
+
+  restartWinButton.addEventListener("click", function () {
     location.reload();
   });
 });
