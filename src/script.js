@@ -1,14 +1,22 @@
 window.addEventListener("load", () => {
-  const instructionsButton = document.getElementById("instructions");
-  const startButton = document.getElementById("start-button");
+  const mainMenu = document.getElementById("main-menu");
+
+  // INSTRUCTIONS BUTTON
+  const instructions = document.getElementById("instructions");
+  const instructionsButton = document.querySelectorAll(".instructions-button");
+
+  // CREDITS BUTTON
+  const credits = document.getElementById("credits");
+  const creditsButton = document.querySelectorAll(".credits-button");
+
+  const mainScreenButton = document.querySelectorAll(".main-screen-button");
+
+  // START THE GAME PART
+  const playButton = document.getElementById("play-button");
   const restartLoseButton = document.getElementById("restart-lose-button");
   const restartWinButton = document.getElementById("restart-win-button");
   const userInput = document.getElementById("user-answer");
   let game;
-
-  instructions.ButtonaddEventListener("click", function () {
-    startGame();
-  });
 
   function startGame() {
     console.log("Start Game");
@@ -16,7 +24,30 @@ window.addEventListener("load", () => {
     game.start();
   }
 
-  startButton.addEventListener("click", function () {
+  // BUTTONS
+  instructionsButton.forEach((button) => {
+    button.addEventListener("click", function () {
+      mainMenu.style.display = "none";
+      instructions.style.display = "block";
+    });
+  });
+
+  creditsButton.forEach((button) => {
+    button.addEventListener("click", function () {
+      mainMenu.style.display = "none";
+      credits.style.display = "block";
+    });
+  });
+
+  mainScreenButton.forEach((button) => {
+    button.addEventListener("click", function () {
+      instructions.style.display = "none";
+      credits.style.display = "none";
+      mainMenu.style.display = "block";
+    });
+  });
+
+  playButton.addEventListener("click", function () {
     startGame();
   });
 

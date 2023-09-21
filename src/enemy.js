@@ -66,7 +66,7 @@ class Enemy {
         this.operation = "+";
         break;
       case "whale":
-        this.xValue = Math.floor(Math.random() * 89) + 10;
+        this.xValue = Math.floor(Math.random() * 18) * 5 + 10;
         this.yValue = Math.floor(Math.random() * 3) + 3;
         this.operation = "*";
         break;

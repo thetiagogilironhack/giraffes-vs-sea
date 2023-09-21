@@ -35,6 +35,10 @@ body {
   display: none;
 }
 
+#credits {
+  display: none;
+}
+
 #game-lose {
   display: none;
 }

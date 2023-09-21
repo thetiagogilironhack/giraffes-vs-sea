@@ -1,6 +1,6 @@
 class Game {
   constructor() {
-    this.startScreen = document.getElementById("game-start");
+    this.mainMenu = document.getElementById("main-menu");
     this.gameContentScreen = document.getElementById("game-content");
     this.gameLoseScreen = document.getElementById("game-lose");
     this.gameWinScreen = document.getElementById("game-win");
@@ -32,7 +32,7 @@ class Game {
 
   // START THE GAME
   start() {
-    this.startScreen.style.display = "none";
+    this.mainMenu.style.display = "none";
     this.gameContentScreen.style.display = "block";
 
     this.gameContentScreen.style.height = `${this.height}px`;
@@ -166,7 +166,7 @@ class Game {
         100,
         150,
         300,
-        1 / 10, // should be 10
+        1 / 9, // should be 9
         2,
         this.enemyStartPosition - 150,
         400,
