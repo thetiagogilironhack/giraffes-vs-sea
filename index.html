@@ -10,10 +10,20 @@
 </head>
 
 <body>
+  <!--AUDIO-->
+  <audio id="background-music" loop>
+    <source src="./music/one-piece.mp3" type="audio/mpeg">
+  </audio>
+
   <main>
+    <!--#1 MAIN MENU-->
     <div id="main-menu" class="box">
-      <!--#1 MAIN MENU-->
       <h1>GIRAFES vs SEA</h1>
+
+      <div id="audio-controls">
+        <button id="play-pause-button">Play Music</button>
+        <input type="range" id="volume-control" min="0" max="1" step="0.01">
+      </div>
 
       <p>
         Help the Going Giraffes crew and its captain defeat the evils of the
@@ -28,8 +38,9 @@
       <footer class="signature">Game by: Tiago Gil, 2023</footer>
     </div>
 
+    <!--#2 INSTRUCTIONS SCREEN-->
     <div id="instructions" class="box">
-      <!--#2 INSTRUCTIONS SCREEN-->
+
       <h1>GIRAFES vs SEA</h1>
 
       <section class="text-box">
@@ -58,8 +69,8 @@
       <footer class="signature">Game by: Tiago Gil, 2023</footer>
     </div>
 
+    <!--#3 CREDITS SCREEN-->
     <div id="credits" class="box">
-      <!--#3 CREDITS SCREEN-->
       <h1>GIRAFES vs SEA</h1>
 
       <section class="text-box">
@@ -67,7 +78,7 @@
         <p>
           This is my first javascript game!<br>
           Thank you for playing! ❤️
-        </p>        
+        </p>
       </section>
 
       <section class="buttons-box">
@@ -76,8 +87,8 @@
       <footer class="signature">Game by: Tiago Gil, 2023</footer>
     </div>
 
+    <!--#4 MAIN GAME-->
     <div id="game-content" class="box">
-      <!--#4 MAIN GAME-->
       <p class="hp-box">GOING GIRAFFES HP: <span id="hp" class="hp">100</span> ❤️</p>
 
       <section class="game-box">
@@ -91,8 +102,8 @@
       </section>
     </div>
 
+    <!--#5 IF YOU LOST-->
     <div id="game-lose" class="box">
-      <!--#5 IF YOU LOST-->
       <h2>The ship as drowned...</h2>
 
       <section class="buttons-box">
@@ -100,8 +111,8 @@
       </section>
     </div>
 
+    <!--#6 IF YOU WON-->
     <div id="game-win" class="box">
-      <!--#6 IF YOU WON-->
       <h2>You did it! The Going Girrafes is safe!</h2>
 
       <section class="buttons-box">
@@ -109,8 +120,8 @@
       </section>
     </div>
 
+    <!--#7 IF YOU WON BUT LOST HP-->
     <div id="game-win-but" class="box">
-      <!--#7 IF YOU WON BUT LOST HP-->
       <h2>You did it! The Going Girrafes is safe! BUTTTTTTTT</h2>
 
       <section class="buttons-box">

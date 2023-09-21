@@ -60,8 +60,6 @@ body {
 }
 
 /* TEXT BOXES INSIDE THE INSTRUCTIONS AND THE CREDITS */
-
-
 .text-box {
   background: #ffffff3a;
   width: 900px;
@@ -169,4 +167,33 @@ button:hover {
   position: absolute;
   bottom: 5px;
   right: 10px;
+}
+
+/* AUDIO */
+#audio-controls{
+  width: 150px;
+  padding: 5px;
+  margin: 0 auto;
+  font-size: 17px;
+  text-align: right;
+  position: absolute;
+  right: 10px;
+  top: 20px;
+}
+
+#play-pause-button, #volume-control {
+  font-size: 15px;
+  color: white;
+  background: #1b5e8b;
+  margin: 7px;
+  padding: 5px;
+  width: 110px;
+  letter-spacing: 1px;
+  border-radius: 50px 0px 0px 50px;
+  border: none;
+  transition: background-color 0.2s;
+}
+
+#audio-controls button:hover {
+  background: #46464685;
 }

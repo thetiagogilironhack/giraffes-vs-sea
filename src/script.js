@@ -65,4 +65,23 @@ window.addEventListener("load", () => {
       userInput.value = "";
     }
   });
+
+  // AUDIO
+  const backgroundMusic = document.getElementById("background-music");
+  const playPauseButton = document.getElementById("play-pause-button");
+  const volumeControl = document.getElementById("volume-control");
+
+  playPauseButton.addEventListener("click", function () {
+    if (backgroundMusic.paused) {
+      backgroundMusic.play();
+      playPauseButton.textContent = "Pause";
+    } else {
+      backgroundMusic.pause();
+      playPauseButton.textContent = "Play";
+    }
+  });
+
+  volumeControl.addEventListener("input", function () {
+    backgroundMusic.volume = volumeControl.value;
+  });
 });
