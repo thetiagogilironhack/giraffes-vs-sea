@@ -55,24 +55,24 @@ class Enemy {
   mathGenerator() {
     switch (this.mathType) {
       case "dolphin":
-        this.xValue = Math.floor(Math.random() * 99) + 1;
-        this.yValue = Math.floor(Math.random() * 9) + 1;
+        this.xValue = Math.floor(Math.random() * 89) + 10;
+        this.yValue = Math.floor(Math.random() * 4) + 6;
         this.operation = "+";
 
         break;
       case "shark":
-        this.xValue = Math.floor(Math.random() * 99) + 1;
-        this.yValue = Math.floor(Math.random() * 8) + 2;
+        this.xValue = Math.floor(Math.random() * 89) + 10;
+        this.yValue = Math.floor(Math.random() * 89) + 10;
         this.operation = "+";
         break;
       case "whale":
-        this.xValue = Math.floor(Math.random() * 99) + 1;
-        this.yValue = Math.floor(Math.random() * 2) + 2;
-        this.operation = "+";
+        this.xValue = Math.floor(Math.random() * 89) + 10;
+        this.yValue = Math.floor(Math.random() * 3) + 3;
+        this.operation = "*";
         break;
       case "kraken":
-        this.xValue = Math.floor(Math.random() * 999) + 1;
-        this.yValue = Math.floor(Math.random() * 99) + 1;
+        this.xValue = Math.floor(Math.random() * 899) + 100;
+        this.yValue = Math.floor(Math.random() * 899) + 100;
         this.operation = "+";
         break;
       default:

@@ -6,18 +6,33 @@ body {
 .box {
   text-align: center;
   padding: 20px 20px 20px 20px;
-  margin: 100px;
-  background-color: lightsteelblue;
-  width: 1000px;
+  margin: 50px;
+  width: 1500px;
   height: 600px;
+  background-image: url(../img/ocean.png);
+  background-size: cover;
 }
 
 #game-content {
-  background-image: url(../img/ocean.png);
-  background-size: cover;
-  text-align: left;
+  animation: slide 10s linear infinite;
   display: none;
   position: relative;
+}
+
+@keyframes slide {
+  0% {
+    background-position: -1000px 0;
+  }
+  95% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 50px 0;
+  }
+}
+
+#instructions {
+  display: none;
 }
 
 #game-lose {

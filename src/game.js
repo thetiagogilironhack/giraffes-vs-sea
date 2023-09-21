@@ -5,35 +5,32 @@ class Game {
     this.gameLoseScreen = document.getElementById("game-lose");
     this.gameWinScreen = document.getElementById("game-win");
     this.height = 600;
-    this.width = 1000;
+    this.width = 1500;
     this.animateId = 0;
     this.gameWin = false;
     this.gameLose = false;
     this.enemyStartPosition = this.width - 200;
-    this.player = new Player(this.gameContentScreen, 200, 350, 30, 410);
+    this.player = new Player(this.gameContentScreen, 200, 350, 30, 430);
     this.dolphin = new Enemy(
       this.gameContentScreen,
       30,
       60,
       180,
       1 / 1.5, // should be 1.5
-      2,
+      1,
       this.enemyStartPosition,
-      450,
-      "./img/dolphin-move-1.png",
+      460,
+      "./img/dolphin.gif",
       true,
       "dolphin"
     );
-    this.shark = undefined;
-    this.whale = undefined;
-    this.kraken = undefined;
     this.dolphinRemoved = false;
     this.sharkRemoved = false;
     this.krakenRemoved = false;
     this.enemies = [this.dolphin];
   }
 
-  // START THE GAME - CHANGES THE DISPLAY OF THE SCREENS
+  // START THE GAME
   start() {
     this.startScreen.style.display = "none";
     this.gameContentScreen.style.display = "block";
@@ -43,35 +40,54 @@ class Game {
 
     this.showEnemyMathProblem("dolphin");
 
-    console.log("Dolphin spawned");
-    console.log("Correct Answer:", this.dolphin.correctAnswer);
-
     this.gameLoop();
   }
 
-  // USER ANSWER DISPLAY - DISPLAY THE USER PROBLEM ON THE SCREEN
+  // USER ANSWER DISPLAY
   createUserAnswerInput() {
     const userAnswer = document.getElementById("user-answer");
-    console.log(userAnswer.value);
     return parseFloat(userAnswer.value);
   }
 
-  // MATH DISPLAY - DISPLAY THE MATH PROBLEM ON THE SCREEN
+  // MATH DISPLAY
   showEnemyMathProblem(enemyType) {
     const enemy = this[enemyType];
     const capitalLetterEnemyType =
       enemyType.charAt(0).toUpperCase() + enemyType.slice(1);
     let getProblemElement = document.getElementById(`${enemyType}-problem`);
-    let mathProblem = `${capitalLetterEnemyType}: ${enemy.xValue} + ${enemy.yValue}`;
+    let mathProblem = `${capitalLetterEnemyType}: ${enemy.xValue} ${enemy.operation} ${enemy.yValue}`;
     getProblemElement.textContent = mathProblem;
   }
 
-  // REMOVE MATH DISPLAY - REMOVE THE MATH PROBLEM OF THE SCREEN
+  // REMOVE MATH DISPLAY
   removeEnemyMathProblem(enemyType) {
     const getProblemElement = document.getElementById(`${enemyType}-problem`);
     getProblemElement.remove();
     const userAnswer = document.getElementById("user-answer");
     userAnswer.value = "";
+  }
+
+  // REMOVE THE ENEMIES BY MATH TYPE - DID THIS FUNCTION TO CUT SOME LINES OFF THE CODE
+  removeEnemiesByType(enemyType) {
+    switch (enemyType) {
+      case "dolphin":
+        this.dolphinRemoved = true;
+        this.removeEnemyMathProblem("dolphin");
+        break;
+      case "shark":
+        this.sharkRemoved = true;
+        this.removeEnemyMathProblem("shark");
+        break;
+      case "whale":
+        this.whaleRemoved = true;
+        this.removeEnemyMathProblem("whale");
+        break;
+      case "kraken":
+        this.krakenRemoved = true;
+        break;
+      default:
+        break;
+    }
   }
 
   // UPDATE or GAMEPLAY - HERE THE ENEMIES START MOVING IN A DEFINED ORDER AND GET ELIMINATED
@@ -84,55 +100,15 @@ class Game {
 
       if (userAnswer === enemy.correctAnswer) {
         enemy.element.remove();
-
+        this.removeEnemiesByType(enemy.mathType);
         this.enemies.splice(i, 1);
-        switch (enemy.mathType) {
-          case "dolphin":
-            this.dolphinRemoved = true;
-            this.removeEnemyMathProblem("dolphin");
-            break;
-          case "shark":
-            this.sharkRemoved = true;
-            this.removeEnemyMathProblem("shark");
-            break;
-          case "whale":
-            this.whaleRemoved = true;
-            this.removeEnemyMathProblem("whale");
-            break;
-          case "kraken":
-            this.krakenRemoved = true;
-            break;
-          default:
-            break;
-        }
-      } else if (enemy.left <= 200 && !enemy.hasDamagedPlayer) {
+      } else if (enemy.left <= 450 && !enemy.hasDamagedPlayer) {
         this.player.health -= enemy.strength;
         enemy.hasDamagedPlayer = true;
         enemy.element.remove();
-
-        switch (enemy.mathType) {
-          case "dolphin":
-            this.dolphinRemoved = true;
-            this.removeEnemyMathProblem("dolphin");
-            break;
-          case "shark":
-            this.sharkRemoved = true;
-            this.removeEnemyMathProblem("shark");
-            break;
-          case "whale":
-            this.whaleRemoved = true;
-            this.removeEnemyMathProblem("whale");
-            break;
-          case "kraken":
-            this.krakenRemoved = true;
-            break;
-          default:
-            break;
-        }
-
+        this.removeEnemiesByType(enemy.mathType);
         this.enemies.splice(i, 1);
         i -= 1;
-        console.log(this.player.health);
       }
     }
 
@@ -149,16 +125,14 @@ class Game {
         1 / 2, // should be 2
         1,
         this.enemyStartPosition,
-        420,
-        "./img/shark-move-1.png",
+        430,
+        "./img/shark.gif",
         true,
         "shark"
       );
       this.enemies.push(this.shark);
       this.sharkSpawned = true;
       this.showEnemyMathProblem("shark");
-      console.log("Shark spawned");
-      console.log("Correct Answer:", this.shark.correctAnswer);
     }
 
     // SPAWN WHALE
@@ -173,18 +147,16 @@ class Game {
         80,
         230,
         1 / 3, // should be 3
-        1,
+        2,
         this.enemyStartPosition,
-        450,
-        "./img/whale-move-1.png",
+        490,
+        "./img/whale.gif",
         true,
         "whale"
       );
       this.enemies.push(this.whale);
       this.whaleSpawned = true;
       this.showEnemyMathProblem("whale");
-      console.log("Whale spawned");
-      console.log("Correct Answer:", this.whale.correctAnswer);
     }
 
     // SPAWN KRAKEN
@@ -198,14 +170,12 @@ class Game {
         2,
         this.enemyStartPosition - 150,
         400,
-        "./img/kraken-move-1.png",
+        "./img/kraken.gif",
         true,
         "kraken"
       );
       this.enemies.push(this.kraken);
       this.showEnemyMathProblem("kraken");
-      console.log("Kraken spawned");
-      console.log("Correct Answer:", this.kraken.correctAnswer);
     }
   }
 

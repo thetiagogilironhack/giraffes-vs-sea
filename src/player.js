@@ -8,7 +8,7 @@ class Player {
     this.top = top - this.height / 2;
 
     this.element = document.createElement("img");
-    this.element.src = "./img/giraffe-move-1.png";
+    this.element.src = "./img/giraffe.gif";
     this.element.style.position = "absolute";
     this.element.style.left = `${this.left}px`;
     this.element.style.top = `${this.top}px`;
