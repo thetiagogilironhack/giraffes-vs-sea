@@ -13,10 +13,10 @@ class Game {
     this.player = new Player(this.gameContentScreen, 200, 350, 30, 430);
     this.dolphin = new Enemy(
       this.gameContentScreen,
-      30,
+      40,
       60,
       180,
-      1 / 1.5, // should be 1.5
+      1,
       1,
       this.enemyStartPosition,
       460,
@@ -119,10 +119,10 @@ class Game {
     ) {
       this.shark = new Enemy(
         this.gameContentScreen,
-        40,
+        60,
         60,
         180,
-        1 / 2, // should be 2
+        1 / 1.5,
         1,
         this.enemyStartPosition,
         430,
@@ -143,11 +143,11 @@ class Game {
     ) {
       this.whale = new Enemy(
         this.gameContentScreen,
-        60,
+        90,
         80,
         230,
-        1 / 3, // should be 3
-        2,
+        1 / 2,
+        1,
         this.enemyStartPosition,
         490,
         "./img/whale.gif",
@@ -166,7 +166,7 @@ class Game {
         100,
         150,
         300,
-        1 / 6, // should be 6
+        1 / 4, // should be 6
         2,
         this.enemyStartPosition - 150,
         450,

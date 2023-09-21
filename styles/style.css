@@ -53,15 +53,13 @@ body {
   font-family: "Lucida Handwriting";
 }
 
-#main-menu h2 {
-  margin-top: 60px;
+#main-menu p {
+  margin-top: 30px;
   font-size: 27px;
 }
 
 /* TEXT BOXES INSIDE THE INSTRUCTIONS AND THE CREDITS */
-/* .hp-box {
-  color: red;
-} */
+
 
 .text-box {
   background: #ffffff3a;
@@ -90,7 +88,6 @@ body {
 }
 
 /* TEXT BOXES INSIDE THE GAME */
-
 .game-box {
   background: #ffffff3a;
   width: 300px;
@@ -104,8 +101,17 @@ body {
   margin: 5px;
 }
 
+.hp-box {
+  width: 300px;
+  padding: 5px;
+  margin: 0 auto;
+  font-size: 17px;
+  position: absolute;
+  text-align: left;
+}
+
 #user-answer {
-  color: #fd0808;
+  color: #1b5e8b;;
   font-size: 15px;
 }
 
@@ -138,7 +144,7 @@ button {
   letter-spacing: 1px;
   border-radius: 50px 5px;
   border: none;
-  transition: background-color 0.8s;
+  transition: background-color 0.2s;
 }
 
 button:hover {
@@ -153,4 +159,13 @@ button:hover {
 
 .bold {
   font-weight: bold;
+}
+
+.signature {
+  font-style: italic;
+  font-size: 16px;
+  color: rgb(209, 209, 209);
+  position: absolute;
+  bottom: 5px;
+  right: 10px;
 }
