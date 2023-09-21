@@ -17,48 +17,54 @@
             Help the Going Giraffes crew and its captain defeat the evils of the
             sea with math!
         </h2>
-        <button id="play-button">Play</button>
-        <button class="instructions-button">Instructions</button>
-        <button class="credits-button">Credits</button>  
+        <section class="buttons-box">
+          <button id="play-button">Play</button>
+          <button class="instructions-button">Instructions</button>
+          <button class="credits-button">Credits</button>
+        </section>        
       </div>
 
       <div id="instructions" class="box">
         <!--#2 INSTRUCTIONS SCREEN-->
         <h1>GIRAFES vs SEA</h1>
-        <h3>INSTRUCTIONS</h3>
-        <p>
+        <section class="text-box">
+          <h3>INSTRUCTIONS</h3>
+          <p>
             Fill the "type result here..." with the correct result to drive the deadly animals away!<br>
 
-            You will start with 100 hit points (HP) and if any animal reaches<br>
+            You will start with <span class="hp">100</span> hit points (HP) and if any animal reaches<br>
 
             If your ship's HP reaches 0, the ship will drown and you'll lose...<br>
 
-            Each animal has its own strength and speed values that will be<br>
-            determined by how hard the math problem is!<br>
+            Each animal has its own strength and speed values that will be determined by how hard the math problem is!<br>
 
-            Dumb animals are fast but deal a low amount damage and are easily<br>
-            scared away with simple math,<br>
+            Dumb animals are fast but deal a low amount of damage and are easily scared away with simple math,<br>
             while intelligent ones are slower but deal a lot more damage and are
             not that easily scared!<br>
             Good luck!
-        </p>
-        <button class="main-screen-button">Main Menu</button>              
+          </p> 
+          </section>
+        <section class="buttons-box">
+          <button class="main-screen-button">Main Menu</button>
+        </section>                     
       </div>
 
       <div id="credits" class="box">
         <!--#2 INSTRUCTIONS SCREEN-->
         <h1>GIRAFES vs SEA</h1>
         <h3>CREDITS</h3>
-        <p>
+        <p class="text-box">
             My name is Tiago and this is my first javascript game!<br>
-            Thank you for playing it! ❤️
+            Thank you for playing! ❤️
         </p>
-        <button class="main-screen-button">Main Menu</button>        
+        <section class="buttons-box">
+          <button class="main-screen-button">Main Menu</button>
+        </section>
       </div>
 
       <div id="game-content" class="box horizontal-line">
         <!--#3 MAIN GAME-->
-        <p>Going Giraffes: <span id="hp">100</span> HP</p>
+        <p>Going Giraffes: <span id="hp" class="hp">100</span> HP</p>
         <input id="user-answer" type="number" placeholder="type result here..."></input>
         <p><span id="dolphin-problem"></span></p>
         <p><span id="shark-problem"></span></p>
@@ -69,13 +75,17 @@
       <div id="game-lose" class="box">
         <!--#4 IF YOU LOST-->
         <h2>The ship as drowned...</h2>
-        <button id="restart-lose-button">Main Menu</button>
+        <section class="buttons-box">
+          <button id="restart-lose-button">Main Menu</button>
+        </section>        
       </div>
 
       <div id="game-win" class="box">
         <!--#5 IF YOU WON-->
-        <h2>The Going Girrafes is safe!</h2>
-        <button id="restart-win-button">Main Menu</button>
+        <h2>You did it! The Going Girrafes is safe!</h2>        
+        <section class="buttons-box">
+          <button id="restart-win-button">Main Menu</button>
+        </section>  
       </div>
     </main>
 

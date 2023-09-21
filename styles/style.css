@@ -1,50 +1,49 @@
 body {
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  font-family: "Calibri Light";
 }
 
+/* THIS BOX DISPLAYS THE CONTENT OF ALL SCREENS */
 .box {
   text-align: center;
-  padding: 20px 20px 20px 20px;
-  margin: 50px;
+  padding: 20px;
+  margin: 50px auto;
   width: 1500px;
   height: 600px;
   background-image: url(../img/ocean.png);
   background-size: cover;
+  animation: slide 600s linear infinite;
+  position: absolute;
+  left: 0;
+  right: 0;
 }
 
-#game-content {
-  animation: slide 10s linear infinite;
-  display: none;
-  position: relative;
-}
-
+/* BACKGROUND IMG GO BRRR */
 @keyframes slide {
   0% {
-    background-position: -1000px 0;
+    background-position: -100000px 0;
   }
   95% {
     background-position: 0 0;
   }
   100% {
-    background-position: 50px 0;
+    background-position: 0 0;
   }
 }
 
-#instructions {
-  display: none;
-}
-
-#credits {
-  display: none;
-}
-
-#game-lose {
-  display: none;
-}
-
+/* DISPLAY NONE EVERY OTHER SCREEN THAT'S NO THE MAIN MENU */
+#instructions,
+#credits,
+#game-content,
+#game-lose,
 #game-win {
   display: none;
+}
+
+#game-content {
+  position: relative;
 }
 
 /* HIDE UP AND DOWN BUTTONS FROM INPUTS */
@@ -53,4 +52,74 @@ input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   appearance: none;
   margin: 0;
+}
+
+/* HEADINGS CHANGES */
+.box h1 {
+  font-family: "Lucida Handwriting";
+}
+
+#main-menu h2 {
+  margin-top: 60px;
+  font-size: 27px;
+}
+
+/* TEXT BOXES INSIDE THE INSTRUCTIONS AND THE CREDITS */
+.text-box {
+  background: #ffffff3a;
+  width: 900px;
+  padding: 5px;
+  border-radius: 50px;
+  margin: 0 auto;
+  font-size: 18.5px;
+}
+
+#instructions h3 {
+  margin-top: 0px;
+}
+
+#instructions p {
+  text-align: left;
+}
+
+#credits p {
+  margin-top: 80px;
+}
+
+/* BUTTONS DISPLAY */
+.buttons-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 240px;
+}
+
+button {
+  font-size: 15px;
+  color: white;
+  background: #1b5e8b;
+  margin: 7px;
+  padding: 10px;
+  width: 150px;
+  letter-spacing: 1px;
+  border-radius: 50px 5px;
+  border: none;
+  transition: background-color 0.8s;
+}
+
+button:hover {
+  background: #46464685;
+}
+
+/* OTHER STUFF */
+.hp {
+  font-weight: bold;
+  color: brown;
+}
+
+.bold {
+  font-weight: bold;
 }
