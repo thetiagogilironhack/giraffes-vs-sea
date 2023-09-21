@@ -25,9 +25,11 @@ body {
   0% {
     background-position: -100000px 0;
   }
+
   95% {
     background-position: 0 0;
   }
+
   100% {
     background-position: 0 0;
   }
@@ -46,14 +48,6 @@ body {
   position: relative;
 }
 
-/* HIDE UP AND DOWN BUTTONS FROM INPUTS */
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  appearance: none;
-  margin: 0;
-}
-
 /* HEADINGS CHANGES */
 .box h1 {
   font-family: "Lucida Handwriting";
@@ -68,22 +62,41 @@ input[type="number"]::-webkit-outer-spin-button {
 .text-box {
   background: #ffffff3a;
   width: 900px;
-  padding: 5px;
+  padding: 10px;
   border-radius: 50px;
   margin: 0 auto;
   font-size: 18.5px;
 }
 
-#instructions h3 {
-  margin-top: 0px;
+.text-box h3 {
+  margin: 7px;
+}
+
+.text-box p {
+  margin: 0px 7px 7px 7px;
 }
 
 #instructions p {
   text-align: left;
+  padding-left: 30px;
 }
 
-#credits p {
-  margin-top: 80px;
+/* TEXT BOXES INSIDE THE GAME */
+.game-box {
+  background: #ffffff3a;
+  width: 900px;
+  padding: 10px;
+  border-radius: 50px;
+  margin: 0 auto;
+  font-size: 18.5px;
+}
+
+/* HIDE UP AND DOWN BUTTONS FROM INPUTS */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
 }
 
 /* BUTTONS DISPLAY */
