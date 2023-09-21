@@ -13,8 +13,7 @@ window.addEventListener("load", () => {
 
   // START THE GAME PART
   const playButton = document.getElementById("play-button");
-  const restartLoseButton = document.getElementById("restart-lose-button");
-  const restartWinButton = document.getElementById("restart-win-button");
+  const restartButton = document.querySelectorAll(".restart-button");
   const userInput = document.getElementById("user-answer");
   let game;
 
@@ -51,12 +50,10 @@ window.addEventListener("load", () => {
     startGame();
   });
 
-  restartLoseButton.addEventListener("click", function () {
-    location.reload();
-  });
-
-  restartWinButton.addEventListener("click", function () {
-    location.reload();
+  restartButton.forEach((button) => {
+    button.addEventListener("click", function () {
+      location.reload();
+    });
   });
 
   // THIS DOESN'T ACTUALLY DO WHAT I FIRST INTENDED IT TO DO BUT I LEFT IT BECAUSE IT LOOKS SATISFYING IN-GAME TO PRESS ENTER

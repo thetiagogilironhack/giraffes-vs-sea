@@ -4,10 +4,12 @@ class Game {
     this.gameContentScreen = document.getElementById("game-content");
     this.gameLoseScreen = document.getElementById("game-lose");
     this.gameWinScreen = document.getElementById("game-win");
+    this.gameWinButScreen = document.getElementById("game-win-but");
     this.height = 600;
     this.width = 1500;
     this.animateId = 0;
     this.gameWin = false;
+    this.gameWinBut = false;
     this.gameLose = false;
     this.enemyStartPosition = this.width - 200;
     this.player = new Player(this.gameContentScreen, 200, 350, 30, 430);
@@ -102,7 +104,7 @@ class Game {
         enemy.element.remove();
         this.removeEnemiesByType(enemy.mathType);
         this.enemies.splice(i, 1);
-      } else if (enemy.left <= 450 && !enemy.hasDamagedPlayer) {
+      } else if (enemy.left <= 360 && !enemy.hasDamagedPlayer) {
         this.player.health -= enemy.strength;
         enemy.hasDamagedPlayer = true;
         enemy.element.remove();
@@ -185,8 +187,12 @@ class Game {
 
     document.getElementById("hp").innerText = this.player.health;
 
-    if (this.kraken && this.krakenRemoved && this.player.health > 0) {
+    if (this.kraken && this.krakenRemoved && this.player.health === 100) {
       this.gameWin = true;
+    }
+
+    if (this.kraken && this.krakenRemoved && this.player.health > 0 && this.player.health < 100) {
+      this.gameWinBut = true;
     }
 
     if (this.player.health <= 0) {
@@ -196,6 +202,9 @@ class Game {
     if (this.gameWin) {
       this.gameContentScreen.style.display = "none";
       this.gameWinScreen.style.display = "block";
+    } else if (this.gameWinBut) {
+      this.gameContentScreen.style.display = "none";
+      this.gameWinButScreen.style.display = "block";
     } else if (this.gameLose) {
       this.gameContentScreen.style.display = "none";
       this.gameLoseScreen.style.display = "block";

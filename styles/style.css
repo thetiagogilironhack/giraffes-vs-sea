@@ -40,7 +40,8 @@ body {
 #credits,
 #game-content,
 #game-lose,
-#game-win {
+#game-win,
+#game-win-but {
   display: none;
 }
 
