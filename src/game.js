@@ -166,10 +166,10 @@ class Game {
         100,
         150,
         300,
-        1 / 9, // should be 9
+        1 / 6, // should be 6
         2,
         this.enemyStartPosition - 150,
-        400,
+        450,
         "./img/kraken.gif",
         true,
         "kraken"
@@ -185,7 +185,7 @@ class Game {
 
     document.getElementById("hp").innerText = this.player.health;
 
-    if (this.kraken && this.krakenRemoved) {
+    if (this.kraken && this.krakenRemoved && this.player.health > 0) {
       this.gameWin = true;
     }
 

@@ -59,11 +59,15 @@ body {
 }
 
 /* TEXT BOXES INSIDE THE INSTRUCTIONS AND THE CREDITS */
+/* .hp-box {
+  color: red;
+} */
+
 .text-box {
   background: #ffffff3a;
   width: 900px;
   padding: 10px;
-  border-radius: 50px;
+  border-radius: 30px;
   margin: 0 auto;
   font-size: 18.5px;
 }
@@ -81,14 +85,28 @@ body {
   padding-left: 30px;
 }
 
+#credits .text-box {
+  width: 500px;
+}
+
 /* TEXT BOXES INSIDE THE GAME */
+
 .game-box {
   background: #ffffff3a;
-  width: 900px;
-  padding: 10px;
-  border-radius: 50px;
+  width: 300px;
+  padding: 5px;
+  border-radius: 20px;
   margin: 0 auto;
-  font-size: 18.5px;
+  font-size: 17px;
+}
+
+.game-box p {
+  margin: 5px;
+}
+
+#user-answer {
+  color: #fd0808;
+  font-size: 15px;
 }
 
 /* HIDE UP AND DOWN BUTTONS FROM INPUTS */
