@@ -10,17 +10,17 @@ class Game {
     this.gameWin = false;
     this.gameLose = false;
     this.enemyStartPosition = this.width - 200;
-    this.player = new Player(this.gameContentScreen, 50, 80, 100, 300);
+    this.player = new Player(this.gameContentScreen, 200, 350, 30, 410);
     this.dolphin = new Enemy(
       this.gameContentScreen,
       30,
-      20,
-      40,
-      0.6, // should be 0.6
+      60,
+      180,
+      1 / 1.5, // should be 1.5
       2,
       this.enemyStartPosition,
-      150,
-      "blue",
+      450,
+      "./img/dolphin-move-1.png",
       true,
       "dolphin"
     );
@@ -109,7 +109,7 @@ class Game {
         this.player.health -= enemy.strength;
         enemy.hasDamagedPlayer = true;
         enemy.element.remove();
-        
+
         switch (enemy.mathType) {
           case "dolphin":
             this.dolphinRemoved = true;
@@ -129,7 +129,7 @@ class Game {
           default:
             break;
         }
-        
+
         this.enemies.splice(i, 1);
         i -= 1;
         console.log(this.player.health);
@@ -144,13 +144,13 @@ class Game {
       this.shark = new Enemy(
         this.gameContentScreen,
         40,
-        30,
         60,
-        0.45, // should be 0.45
+        180,
+        1 / 2, // should be 2
         1,
         this.enemyStartPosition,
-        300,
-        "yellow",
+        420,
+        "./img/shark-move-1.png",
         true,
         "shark"
       );
@@ -170,13 +170,13 @@ class Game {
       this.whale = new Enemy(
         this.gameContentScreen,
         60,
-        50,
-        100,
-        0.3, // should be 0.3
+        80,
+        230,
+        1 / 3, // should be 3
         1,
         this.enemyStartPosition,
         450,
-        "orange",
+        "./img/whale-move-1.png",
         true,
         "whale"
       );
@@ -194,11 +194,11 @@ class Game {
         100,
         150,
         300,
-        0.1, // should be 0.1
+        1 / 10, // should be 10
         2,
         this.enemyStartPosition - 150,
-        300,
-        "gray",
+        400,
+        "./img/kraken-move-1.png",
         true,
         "kraken"
       );

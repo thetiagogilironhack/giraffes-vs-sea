@@ -13,6 +13,8 @@ body {
 }
 
 #game-content {
+  background-image: url(../img/ocean.png);
+  background-size: cover;
   text-align: left;
   display: none;
   position: relative;
@@ -24,4 +26,12 @@ body {
 
 #game-win {
   display: none;
+}
+
+/* HIDE UP AND DOWN BUTTONS FROM INPUTS */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
 }

@@ -7,9 +7,8 @@ class Player {
     this.left = left;
     this.top = top - this.height / 2;
 
-    this.element = document.createElement("player");
-    // this.element.src = img;
-    this.element.style.backgroundColor = "red"; // need to delete when add img and unhide the img element above
+    this.element = document.createElement("img");
+    this.element.src = "./img/giraffe-move-1.png";
     this.element.style.position = "absolute";
     this.element.style.left = `${this.left}px`;
     this.element.style.top = `${this.top}px`;

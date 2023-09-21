@@ -24,8 +24,7 @@ class Enemy {
     this.mathType = mathType;
 
     this.element = document.createElement("img");
-    // this.element.src = img;
-    this.element.style.backgroundColor = img; // need to delete when add img and unhide the img element above
+    this.element.src = img;
     this.element.style.position = "absolute";
     this.element.style.left = `${this.left}px`;
     this.element.style.top = `${this.top}px`;
@@ -35,7 +34,7 @@ class Enemy {
     this.gameContentScreen.appendChild(this.element);
     this.xValue = 0;
     this.yValue = 0;
-    this.operation;
+    this.operation = "";
     this.correctAnswer = this.mathGenerator();
   }
 
@@ -56,19 +55,19 @@ class Enemy {
   mathGenerator() {
     switch (this.mathType) {
       case "dolphin":
-        this.xValue = Math.floor(Math.random() * 9) + 1;
+        this.xValue = Math.floor(Math.random() * 99) + 1;
         this.yValue = Math.floor(Math.random() * 9) + 1;
         this.operation = "+";
 
         break;
       case "shark":
         this.xValue = Math.floor(Math.random() * 99) + 1;
-        this.yValue = Math.floor(Math.random() * 9) + 1;
+        this.yValue = Math.floor(Math.random() * 8) + 2;
         this.operation = "+";
         break;
       case "whale":
         this.xValue = Math.floor(Math.random() * 99) + 1;
-        this.yValue = Math.floor(Math.random() * 99) + 1;
+        this.yValue = Math.floor(Math.random() * 2) + 2;
         this.operation = "+";
         break;
       case "kraken":
@@ -83,6 +82,6 @@ class Enemy {
         break;
     }
 
-    return eval(`${this.xValue} + ${this.yValue}`);
+    return eval(`${this.xValue} ${this.operation} ${this.yValue}`);
   }
 }
