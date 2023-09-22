@@ -9,7 +9,10 @@ window.addEventListener("load", () => {
   const credits = document.getElementById("credits");
   const creditsButton = document.querySelectorAll(".credits-button");
 
+  // MAIN SCREEN BUTTON
   const mainScreenButton = document.querySelectorAll(".main-screen-button");
+
+  const mainScreenButtonFromGame = document.getElementById("main-screen-button-from-game");
 
   // START THE GAME PART
   const playButton = document.getElementById("play-button");
@@ -48,6 +51,10 @@ window.addEventListener("load", () => {
 
   playButton.addEventListener("click", function () {
     startGame();
+  });
+
+  mainScreenButtonFromGame.addEventListener("click", function () {
+    location.reload();
   });
 
   restartButton.forEach((button) => {

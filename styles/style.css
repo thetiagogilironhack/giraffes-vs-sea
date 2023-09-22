@@ -83,7 +83,7 @@ body {
 }
 
 #credits .text-box {
-  width: 500px;
+  width: 300px;
 }
 
 /* TEXT BOXES INSIDE THE GAME */
@@ -110,8 +110,38 @@ body {
 }
 
 #user-answer {
-  color: #1b5e8b;;
+  color: #1b5e8b;
+  ;
   font-size: 15px;
+}
+
+
+#buttons-box-from-game {
+  width: 150px;
+  padding: 5px;
+  margin: 0 auto;
+  font-size: 17px;
+  text-align: right;
+  position: absolute;
+  right: 10px;
+  top: 20px;
+}
+
+#main-screen-button-from-game {
+  font-size: 15px;
+  color: white;
+  background: #1b5e8b;
+  margin: 7px;
+  padding: 5px;
+  width: 110px;
+  letter-spacing: 1px;
+  border-radius: 50px 0px 0px 50px;
+  border: none;
+  transition: background-color 0.2s;
+}
+
+#buttons-box-from-game button:hover {
+  background: #46464685;
 }
 
 /* HIDE UP AND DOWN BUTTONS FROM INPUTS */
@@ -170,7 +200,7 @@ button:hover {
 }
 
 /* AUDIO */
-#audio-controls{
+#audio-controls {
   width: 150px;
   padding: 5px;
   margin: 0 auto;
@@ -181,7 +211,8 @@ button:hover {
   top: 20px;
 }
 
-#play-pause-button, #volume-control {
+#play-pause-button,
+#volume-control {
   font-size: 15px;
   color: white;
   background: #1b5e8b;
