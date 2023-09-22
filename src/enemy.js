@@ -38,8 +38,6 @@ class Enemy {
     this.correctAnswer = this.mathGenerator();
   }
 
-  spawnTime() {}
-
   move() {
     if (this.isMoving) {
       setTimeout(() => this.updatePosition(), this.spawn);
