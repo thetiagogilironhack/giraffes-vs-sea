@@ -111,10 +111,8 @@ body {
 
 #user-answer {
   color: #1b5e8b;
-  ;
   font-size: 15px;
 }
-
 
 #buttons-box-from-game {
   width: 150px;
@@ -227,4 +225,40 @@ button:hover {
 
 #audio-controls button:hover {
   background: #46464685;
+}
+
+/* EASTER EGG */
+#marvel-char {
+  width: 100px;
+  height: 70px;
+  position: absolute;
+  top: 70%;
+  right: -10%;
+  animation: moveImage 10s linear 15s forwards;
+  z-index: 1;
+  visibility: hidden;
+  opacity: 0;
+}
+
+@keyframes moveImage {
+  0% {
+    right: 0%;
+    visibility: hidden;
+    opacity: 0;
+  }
+  10% {
+    right: 10%;
+    visibility: visible;
+    opacity: 1;
+  }
+  90% {
+    right: 85%;
+    visibility: visible;
+    opacity: 1;
+  }
+  100% {
+    right: 92%;
+    visibility: hidden;
+    opacity: 0;
+  }
 }

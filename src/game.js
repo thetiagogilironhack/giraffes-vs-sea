@@ -124,7 +124,7 @@ class Game {
         60,
         60,
         180,
-        1 / 1.5,
+        1 / 1.7,
         1,
         this.enemyStartPosition,
         430,
